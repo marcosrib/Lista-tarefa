@@ -33,7 +33,6 @@ export function TodoInput({ addTask }: TodoInputProps) {
       >
         <Image source={checkIcon} />
       </TouchableOpacity>
-      <Text>{task}</Text>
     </View>
   
   )

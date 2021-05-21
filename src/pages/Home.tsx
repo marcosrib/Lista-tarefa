@@ -14,7 +14,8 @@ export function Home() {
   const [tasks, setTasks] = useState<Task[]>([]);
 
   function handleAddTask(newTaskTitle: string) {
-
+   console.warn(newTaskTitle);
+   
 
     if (newTaskTitle !== "") {
       const contasksArray = [{
