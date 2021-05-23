@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-
+import {Switch} from 'react-native';
 import { Header } from '../components/Header';
 import { MyTasksList } from '../components/MyTasksList';
 import { TodoInput } from '../components/TodoInput';
+import dark from '../theme/dark';
+import light from '../theme/light';
 
 interface Task {
   id: number;
@@ -12,6 +14,8 @@ interface Task {
 
 export function Home() {
   const [tasks, setTasks] = useState<Task[]>([]);
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
   function handleAddTask(newTaskTitle: string) {
    console.warn(newTaskTitle);
@@ -42,9 +46,13 @@ export function Home() {
 
   return (
     <>
-      <Header />
+      <Header theme= {isEnabled} />
 
       <TodoInput addTask={handleAddTask} />
+      <Switch
+         onValueChange={toggleSwitch}
+         value={isEnabled}
+      />
 
       <MyTasksList
         tasks={tasks}
